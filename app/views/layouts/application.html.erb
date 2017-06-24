@@ -3,14 +3,17 @@
   <head>
     <title>Receitas</title>
     <%= csrf_meta_tags %>
-
+    
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://ucarecdn.com/libs/widget/2.10.3/uploadcare.full.min.js" charset="utf-8"></script>
     <%= render partial: "layouts/custom_error_messages" %>
     <%= render partial: "layouts/navbar" %>
     <%= render partial: "layouts/menu" %>
   </head>
+
+
 
   <body>
     <%= yield %>

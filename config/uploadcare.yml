@@ -1,0 +1,14 @@
+# config/uploadcare.yml
+defaults: &defaults
+  public_key: "eea2ce7a52dbad425733"
+  private_key: "9809c1877b9091ed03fe"
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+  autostore: false
+
+production:
+  <<: *defaults
