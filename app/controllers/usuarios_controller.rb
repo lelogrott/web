@@ -41,7 +41,7 @@ class UsuariosController < ApplicationController
 	private
 
 	def user_params
-		params.require(:usuario).permit(:name, :email, :login, :password, :password_confirmation)
+		params.require(:usuario).permit(:name, :email, :login, :password, :password_confirmation, :avatar)
 	end
 
 	def default_for_edit
