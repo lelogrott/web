@@ -1,2 +1,0 @@
-class Receitum < ApplicationRecord
-end
