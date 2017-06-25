@@ -1,0 +1,10 @@
+<h1><%= @receita.title %></h1>
+
+<%= image_tag @receita.image.url unless @receita.image.url.blank? %>
+
+<b>Ingredientes</b>
+<%= tabela_de_ingredientes(@receita) %>
+<br>
+<b>Modo de preparo</b><br>
+<%= @receita.modo_de_preparo %>
+
