@@ -1,0 +1,29 @@
+<% provide(:title, 'Cadastro de Receita') %>
+<h1>Cadastro de Receita</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @receita do |f| %>
+      <%= f.label :title %>
+      <%= f.text_field :title %><br>
+
+      <%= f.label :modo_de_preparo %>
+      <%= f.text_field :modo_de_preparo %><br>
+
+      <%= f.label :ingredientes %>
+      <%= number_field_tag 'receita[ingredientes][][quantidade]' %> 
+      <%= select_tag 'receita[ingredientes][][id]', options_for_select(ingredientes_for_select) %> <br>
+
+      <%= number_field_tag 'receita[ingredientes][][quantidade]' %>
+      <%= select_tag 'receita[ingredientes][][id]', options_for_select(ingredientes_for_select) %><br>
+      
+
+
+      <%= f.label :image %><br>
+      <%= f.file_field :image %><br>
+      <%= hidden_field_tag 'usuario_id', @user.id %>
+
+      <%= f.submit "Cadastrar receita", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
