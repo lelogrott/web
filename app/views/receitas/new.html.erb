@@ -29,9 +29,9 @@
     <% end %>
   </div>
 
-  <div data-context="popup">
+  <div data-context="popup" style="display: none; border-color: black; border-style: solid; width: 300px; padding: 10px 10px 10px 10px;">
     <%= form_for :ingrediente, url: { controller: "ingredientes", action: "create", usuario_id: @user.id } do |fi| %>
-      <%= fi.label :name %>  <%= fi.text_field :name %>
+      <%= fi.label :nome %>  <%= fi.text_field :name %>
       <%= fi.submit "Cadastrar ingrediente", class: "btn btn-primary" %>
     <% end %>
   </div>
@@ -49,11 +49,15 @@
     $(container).append($(field2));
   }
 
+  function display_popup(popup) {
+    popup.style.display= "block";
+  }
+
   function bind_select_tag() {
     $('[data-context="ingredientes"]').each(function(){
       $(this).on('change', function(){
         if($('option:selected', this).text() == 'Outro') {
-          display_popup();
+          display_popup($('[data-context="popup"]')[0]);
         }
       });
     });
