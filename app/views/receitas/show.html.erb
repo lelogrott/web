@@ -1,6 +1,6 @@
 <h1><%= @receita.title %></h1>
 
-<%= image_tag @receita.image.url unless @receita.image.url.blank? %>
+<%= image_tag @receita.image.url unless @receita.image.url.blank? %> <br>
 
 <b>Ingredientes</b>
 <%= tabela_de_ingredientes(@receita) %>

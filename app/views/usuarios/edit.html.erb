@@ -22,6 +22,15 @@
       <%= f.label :sobre %>
       <%= f.text_area :sobre %><br>
 
+      <%= f.label :perfil_privado %>
+      <%= f.label(:true, "Sim")%>
+      <%= f.radio_button(:privado, true) %>
+      <%= f.label(:true, "Não")%>
+      <%= f.radio_button(:privado, false) %> <br>
+
+      <%= f.label :avatar %><br>
+      <%= f.file_field :avatar %><br>
+
       <%= f.submit "Salvar alterações", class: "btn btn-primary" %>
     <% end %>
   </div>
