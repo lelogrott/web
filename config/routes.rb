@@ -5,8 +5,11 @@ Rails.application.routes.draw do
 	get '/login', to: 'sessions#new'
 	post '/login', to: 'sessions#create'
 	get '/logout', to: 'sessions#destroy'
-
-	resources :usuarios
+	resources :usuarios do
+		member do
+			get :seguindo, :seguidores, :feed
+		end
+	end
 	resources :receitas
 	resources :ingredientes
 	#match '/usuario/create' => 'usuario#create', :as => :create_usuario_path, :via => :post
