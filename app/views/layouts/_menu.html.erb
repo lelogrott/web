@@ -3,7 +3,7 @@
   <a href="javascript:void(0)" onclick="w3_close()"
   class="w3-bar-item w3-button">Fechar Menu</a>
   <%= link_to "Meu perfil", usuario_path(current_user) %> <br>
-  <%= link_to "Minhas receitas", receita_path(current_user) %> <br>
+  <%= link_to "Minhas receitas", receitas_usuario_path(current_user) %> <br>
   <%= link_to "Configurações", edit_usuario_path(current_user) %> <br>
   <% #link_to "Descobrir,  "%>
   <a href="#descobrir" onclick="w3_close()" class="w3-bar-item w3-button">Descobrir</a>

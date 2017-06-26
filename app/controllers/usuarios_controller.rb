@@ -1,11 +1,16 @@
 class UsuariosController < ApplicationController
 	include SessionsHelper
-	before_action :default_for_edit, only: [:show, :edit, :update, :feed]
+	before_action :default_for_edit, only: [:show, :edit, :update, :feed, :receitas]
 	def index
 		@user = Usuario.all
 	end
 
 	def show
+		@receitas = @user.receitas.order('created_at DESC').limit(4)
+	end
+
+	def receitas
+		@receitas = @user.receitas.order('created_at DESC')
 	end
 
 	def new
@@ -56,7 +61,7 @@ class UsuariosController < ApplicationController
 	private
 
 	def user_params
-		params.require(:usuario).permit(:name, :email, :login, :password, :password_confirmation, :avatar)
+		params.require(:usuario).permit(:name, :email, :login, :password, :password_confirmation, :avatar, :sobre)
 	end
 
 	def default_for_edit
