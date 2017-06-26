@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
 	resources :usuarios do
 		member do
-			get :seguindo, :seguidores, :feed, :receitas
+			get :seguindo, :seguidores, :feed, :receitas, :descobrir
 		end
 	end
 

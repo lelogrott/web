@@ -1,6 +1,6 @@
 class UsuariosController < ApplicationController
 	include SessionsHelper
-	before_action :default_for_edit, only: [:show, :edit, :update, :feed, :receitas]
+	before_action :default_for_edit, only: [:show, :edit, :update, :feed, :receitas, :descobrir]
 	def index
 		@user = Usuario.all
 	end
@@ -29,6 +29,16 @@ class UsuariosController < ApplicationController
 	end
 
 	def edit
+	end
+
+	def descobrir
+		@lista_receitas = []
+		Receita.all.each do |receita|
+			if ((!receita.usuario.privado || @user.seguindo.include?(receita.usuario)) && receita.usuario != current_user) then
+				@lista_receitas << receita
+			end
+		end
+		
 	end
 
 	def update
@@ -61,7 +71,7 @@ class UsuariosController < ApplicationController
 	private
 
 	def user_params
-		params.require(:usuario).permit(:name, :email, :login, :password, :password_confirmation, :avatar, :sobre)
+		params.require(:usuario).permit(:name, :email, :login, :password, :password_confirmation, :avatar, :sobre, :privado)
 	end
 
 	def default_for_edit

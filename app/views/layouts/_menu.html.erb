@@ -2,11 +2,10 @@
 <nav class="w3-sidebar w3-bar-block w3-card-2 w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:40%;min-width:300px" id="mySidebar">
   <a href="javascript:void(0)" onclick="w3_close()"
   class="w3-bar-item w3-button">Fechar Menu</a>
-  <%= link_to "Meu perfil", usuario_path(current_user) %> <br>
-  <%= link_to "Minhas receitas", receitas_usuario_path(current_user) %> <br>
-  <%= link_to "Configurações", edit_usuario_path(current_user) %> <br>
-  <% #link_to "Descobrir,  "%>
-  <a href="#descobrir" onclick="w3_close()" class="w3-bar-item w3-button">Descobrir</a>
+  <%= link_to "Meu perfil", usuario_path(current_user), class: "w3-bar-item w3-button" %> 
+  <%= link_to "Minhas receitas", receitas_usuario_path(current_user), class: "w3-bar-item w3-button"%> 
+  <%= link_to "Configurações", edit_usuario_path(current_user), class: "w3-bar-item w3-button" %> 
+  <%= link_to "Descobrir", descobrir_usuario_path(current_user), class: "w3-bar-item w3-button"%>
   <%= link_to "Logout", logout_path, class: "w3-bar-item w3-button"%>
 </nav>
 
