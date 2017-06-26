@@ -11,7 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <%= render partial: "layouts/custom_error_messages" %>
     <%= render partial: "layouts/navbar" %>
-    <%= render partial: "layouts/menu" %>
+    <%= render partial: "layouts/menu" if current_user.present? %>
   </head>
 
 
