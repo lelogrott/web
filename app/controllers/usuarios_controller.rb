@@ -1,6 +1,6 @@
 class UsuariosController < ApplicationController
 	include SessionsHelper
-	before_action :default_for_edit, only: [:show, :edit, :update]
+	before_action :default_for_edit, only: [:show, :edit, :update, :feed]
 	def index
 		@user = Usuario.all
 	end
@@ -35,7 +35,22 @@ class UsuariosController < ApplicationController
 		end
 	end
 
+	def feed
+		@amigos = @user.seguindo
+		@receitas_collection = {}
+		@amigos.each do |amigo|
+			@receitas_collection[amigo.id.to_s.to_sym] = Receita.where(usuario_id: amigo.id)
+		end
+	end
+
 	def destroy
+	end
+
+	def seguindo
+
+	end
+
+	def seguidores
 	end
 
 	private
