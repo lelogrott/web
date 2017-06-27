@@ -12,7 +12,12 @@ Rails.application.routes.draw do
 		end
 	end
 
-	resources :receitas 
+	resources :receitas do
+		member do
+			get :destroy
+		end
+	end
+
 	resources :ingredientes
 	#match '/usuario/create' => 'usuario#create', :as => :create_usuario_path, :via => :post
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

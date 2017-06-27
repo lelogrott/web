@@ -2,7 +2,7 @@
         <% @receitas.each do |receita| %>
           <div style="display:block;">
             <%= image_tag receita.image.url(:medium) %>
-            <h3><%= link_to receita.title.titleize, receitas_usuario_path %></h3> <br>
+            <h3><%= link_to receita.title.titleize, receita_path(receita) %></h3> <br>
           </div>
       <% end %>     
 </div>
