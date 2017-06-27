@@ -9,5 +9,5 @@
 <%= @receita.modo_de_preparo %> <br>
 
 
-<%= link_to "Excluir receita", url_for(controller: 'receitas', action: 'destroy', id: @receita.id) %>
+<%= link_to "Excluir receita", excluir_receita_path(@receita) %>
 

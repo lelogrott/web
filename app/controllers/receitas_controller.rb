@@ -44,7 +44,7 @@ class ReceitasController < ApplicationController
 		end
 	end
 
-	def destroy
+	def excluir
 		receita = Receita.find(params[:id])
 		user = receita.usuario
 		receita.destroy

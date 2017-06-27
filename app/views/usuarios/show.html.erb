@@ -1,5 +1,5 @@
   
-
+  <% deve_seguir = !(current_user.seguindo.include?(@user)) %>
   <!-- About Section -->
   <div class="w3-container w3-padding-32 w3-center">  
     <h3><%= @user.name.titleize %></h3><br>
@@ -10,7 +10,11 @@
       <%= @user.sobre %>        
       </p>
     </div>
-    <%= link_to "Cadastrar nova receita", new_receita_path(usuario_id: @user.id) %>
+    <% if @user == current_user then %>
+      <%= link_to "Cadastrar nova receita", new_receita_path(usuario_id: @user.id) %>
+    <% else %>
+        <button><a href=<%= url_for(controller: 'usuarios', action: deve_seguir ? 'seguir' : 'deixar_de_seguir', user_id: @user.id)%>><%= deve_seguir ? "Seguir" : "Deixar de Seguir" %> </a></button>
+    <% end %>
   </div>
   <hr>
 

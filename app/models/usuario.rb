@@ -15,7 +15,7 @@ class Usuario < ApplicationRecord
 
 	validates :name, presence: true
 	validates :login, presence: true
-	validates :password, presence: true, length: {minimum: 4}
+	#validates :password, presence: true, length: {minimum: 4}
 	validates :privado, inclusion: { in: [true, false] }
 
 	def seguir(usuario)

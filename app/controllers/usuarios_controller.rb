@@ -62,7 +62,22 @@ class UsuariosController < ApplicationController
 	end
 
 	def seguindo
+	end
 
+	def seguir
+		debugger
+		amigo = Usuario.find(params[:user_id])
+		user = Usuario.find(current_user.id)
+		user.seguindo << amigo
+		user.save!
+		redirect_to amigo
+	end
+
+	def deixar_de_seguir
+		amigo = Usuario.find(params[:user_id])
+		current_user.seguindo.delete(amigo)
+		current_user.save!
+		redirect_to amigo
 	end
 
 	def seguidores
