@@ -6,7 +6,20 @@ class UsuariosController < ApplicationController
 	end
 
 	def show
-		@receitas = @user.receitas.order('created_at DESC').limit(4)
+		@receitas = @user.receitas.order('created_at DESC').limit(4)		
+	end
+
+	def view
+		@user = Usuario.find(params[:user_id])
+		if current_user.present? then
+			unless (!@user.privado || @user.seguidores.include?(current_user)) then
+				redirect_to current_user, notice: "O usuário #{@user.name} tem perfil privado."
+			end
+		else
+			if (@user.privado) then
+				redirect_to login_path, notice: "O usuário #{@user.name} tem perfil privado."
+			end
+		end	
 	end
 
 	def receitas
