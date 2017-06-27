@@ -45,6 +45,10 @@ class ReceitasController < ApplicationController
 	end
 
 	def destroy
+		receita = Receita.find(params[:id])
+		user = receita.usuario
+		receita.destroy
+		redirect_to user
 	end
 
 	private

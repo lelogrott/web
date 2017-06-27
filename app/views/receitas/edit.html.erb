@@ -1,0 +1,74 @@
+<% provide(:title, 'Cadastro de Receita') %>
+<h1>Cadastro de Receita</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @receita do |f| %>
+      <%= f.label :title %>
+      <%= f.text_field :title %><br>
+
+      <%= f.label :modo_de_preparo %>
+      <%= f.text_field :modo_de_preparo %><br>
+
+      <%= f.label :ingredientes %>
+      <div id="ingredientes-container">
+        <%= number_field_tag 'receita[ingredientes][][quantidade]' %> 
+        <%= select_tag 'receita[ingredientes][][id]', options_for_select(ingredientes_for_select),  { "data-context"=> "ingredientes" } %> <br>
+
+      </div>
+        <a href="" data-context='mais-ingredientes'>Mais ingredientes</a>
+        <br>
+      
+
+
+      <%= f.label :image %><br>
+      <%= f.file_field :image %><br>
+      <%= hidden_field_tag 'usuario_id', @user.id %>
+
+      <%= f.submit "Cadastrar receita", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+  <div data-context="popup" style="display: none; border-color: black; border-style: solid; width: 300px; padding: 10px 10px 10px 10px;">
+    <%= form_for :ingrediente, url: { controller: "ingredientes", action: "create", usuario_id: @user.id } do |fi| %>
+      <%= fi.label :nome %>  <%= fi.text_field :name %>
+      <%= fi.submit "Cadastrar ingrediente", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+
+
+</div>
+<script type="text/javascript">
+  function add_ingredient_field(container) {
+    var field1 = '<%= number_field_tag("receita[ingredientes][][quantidade]").to_s%>';
+    var field2 = '<%= select_tag("receita[ingredientes][][id]", options_for_select(ingredientes_for_select).tr("\n", ""),  {"data-context"=> "ingredientes"} ) %>';
+    field2 = field2.replace(/&gt;/g, '>').replace(/&lt;/g,'<').replace(/&quot;/g, '"');
+
+    $(container).append(field1);
+    $(container).append($(field2));
+  }
+
+  function display_popup(popup) {
+    popup.style.display= "block";
+  }
+
+  function bind_select_tag() {
+    $('[data-context="ingredientes"]').each(function(){
+      $(this).on('change', function(){
+        if($('option:selected', this).text() == 'Outro') {
+          display_popup($('[data-context="popup"]')[0]);
+        }
+      });
+    });
+  }
+
+  $(document).ready(function() {
+    bind_select_tag();
+    $('[data-context="mais-ingredientes"]').click(function (e){
+      e.preventDefault();
+      add_ingredient_field($("#ingredientes-container"));
+      bind_select_tag();
+    });
+  });
+</script>

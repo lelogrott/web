@@ -1,6 +1,5 @@
 <div class="w3-row-padding w3-padding-16 w3-center" id="food">
 <% @lista_receitas.each do |receita| %>
-	<% debugger %>
     <%= image_tag receita.image.url(:medium) %> <br>
     <%= link_to image_tag(receita.usuario.avatar.url(:small)), usuario_path(receita.usuario) %>
     <span> <%= receita.usuario.name.titleize %> </span>

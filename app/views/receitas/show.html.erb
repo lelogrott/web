@@ -6,5 +6,8 @@
 <%= tabela_de_ingredientes(@receita) %>
 <br>
 <b>Modo de preparo</b><br>
-<%= @receita.modo_de_preparo %>
+<%= @receita.modo_de_preparo %> <br>
+
+
+<%= link_to "Excluir receita", url_for(controller: 'receitas', action: 'destroy', id: @receita.id) %>
 
