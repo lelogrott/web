@@ -1,7 +1,7 @@
 <div class="w3-row-padding w3-padding-16 w3-center" id="food">
 <% @lista_receitas.each do |receita| %>
     <%= image_tag receita.image.url(:medium) %> <br>
-    <%= link_to image_tag(receita.usuario.avatar.url(:small)), view_path(receita.usuario) %>
+    <%= link_to image_tag(receita.usuario.avatar.url(:small)), view_usuario_path(user_id: receita.usuario.id) %>
     <span> <%= receita.usuario.name.titleize %> </span>
     <h3><%= link_to receita.title.titleize, receita_path(receita) %></h3>
 <% end %>
