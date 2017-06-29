@@ -1,21 +1,52 @@
 
-
 <% provide(:title, "Log in") %>
-<h1>Log in</h1>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(:session, url: login_path) do |f| %>
+<body class="login">
+<!-- header starts here -->
 
-      <%= f.label :login %>
-      <%= f.text_field :login, class: 'form-control' %>
+<!-- header ends here -->
+<div class="loginbox radius">
+  <h2 style="color:#141823; text-align:center;">Welcome to Facebook</h2>
+  <div class="loginboxinner radius">
+    <div class="loginheader">
+      <h4 class="title">Connect with friends and the world around you.</h4>
+    </div>
+    <!--loginheader-->
+    <div class="loginform">
+      <%= form_for(:usuarios, url:new_usuario_path) do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "radius" %><br>
 
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
+        <%= f.label :email %>
+        <%= f.email_field :email, class: "radius" %><br>
 
-      <%= f.submit "Log in", class: "btn btn-primary" %>
-    <% end %>
+        <%= f.label :login %>
+        <%= f.text_field :login, class: "radius" %><br>
 
-    <p>New user? <%= link_to "Sign up now!", new_usuario_path %></p>
+        <%= f.label :password %>
+        <%= f.password_field :password, class: "radius" %><br>
+
+        <%= f.label :password_confirmation, "Confirmation" %>
+        <%= f.password_field :password_confirmation, class: "radius" %><br>
+
+        <%= f.label :sobre %>
+        <%= f.text_area :sobre %><br>
+
+        <%= f.label :perfil_privado %>
+        <%= f.label(:true, "Sim")%>
+        <%= f.radio_button(:privado, true) %>
+        <%= f.label(:true, "Não")%>
+        <%= f.radio_button(:privado, false) %> <br>
+
+        <%= f.label :avatar %><br>
+        <%= f.file_field :avatar, class: "radius" %><br>
+
+        <%= f.submit "Create my account", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+    <!--loginform-->
   </div>
+  <!--loginboxinner-->
 </div>
+<!--loginbox-->
+</body>
