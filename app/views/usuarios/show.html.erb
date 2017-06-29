@@ -1,11 +1,11 @@
   
   <% deve_seguir = !(current_user.seguindo.include?(@user)) %>
   <!-- About Section -->
-  <div class="w3-container w3-padding-32 w3-center">  
-    <h3><%= @user.name.titleize %></h3><br>
+  <div class="w3-container w3-padding-32 w3-center usuario-home">  
+    <h1><%= @user.name.titleize %></h1><br>
     <!-- <img src="/w3images/chef.jpg" alt="Me" class="w3-image" style="display:block;margin:auto" width="800" height="533"> -->
-    <%= image_tag @user.avatar.url %>
-    <div class="w3-padding-32">
+    <%= image_tag @user.avatar.url, class: "avatar-usuario" %>
+    <div class="w3-padding-32 sobre">
       <p>
       <%= @user.sobre %>        
       </p>
@@ -21,7 +21,7 @@
     <div class="w3-row-padding w3-padding-16 w3-center" id="food">
         <% @receitas.each do |receita| %>
           <div class="w3-quarter" style="display:inline-block;">
-            <%= image_tag receita.image.url(:thumb) %>
+            <%= image_tag receita.image.url(:thumb), class: "img-receitas-home" %>
             <h3><%= link_to receita.title.titleize, receita_path(receita) %></h3>
           </div>
       <% end %>     
