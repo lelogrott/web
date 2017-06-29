@@ -25,8 +25,8 @@ development:
   encoding: unicode
   database: projectweb
   pool: 5
-  username: projectweb
-  password: 123qwe
+  username: postgres
+  password: postgres
   host: 127.0.0.1
   port: 5432
 
@@ -36,7 +36,7 @@ test:
   database: projectweb
   pool: 5
   username: postgres
-  password: 123qwe
+  password: postgres
   host: 127.0.0.1
   port: 5432
 
