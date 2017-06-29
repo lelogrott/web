@@ -13,10 +13,44 @@
 	border-radius: 5%;
 }
 
+.config-container {
+	position: relative;
+	.loginbox {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		right: 0px;
+		margin: 70px auto auto;
+	}
+}
+.sobre {
+	text-align: left;
+	display: block;
+	padding: 16px 0px 0px 16px;
+}
+ .avatar-usuario-edit {
+ 	text-align: left;
+	display: block;
+	margin:16px;
+	width:100%;
+	&.no-padding {
+		padding: 0;
+	}
+ }
 
+.container-opcoes-privado {
+	padding: 16px 0px 0px 16px;
+	float: left;
+	&.avatar-usuario-edit {
+		width: 100%;
+		padding-left: 0;
+	}
+	
+}
 
-
-
+.file-upload-area {
+	background: white;
+}
 
 html, body, div, span,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,

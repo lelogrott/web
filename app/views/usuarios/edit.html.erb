@@ -1,7 +1,6 @@
 <% provide(:title, 'Configurações') %>
-<h1>Configurações</h1>
 
-<div class="row">
+<!-- <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for @user do |f| %>
       <%= f.label :name %>
@@ -33,5 +32,37 @@
 
       <%= f.submit "Salvar alterações", class: "btn btn-primary" %>
     <% end %>
+  </div>
+</div> -->
+<div class="config-container">
+  <div class="loginbox radius">
+    <div class="loginboxinner radius">
+      <div class="loginform">
+        <%= form_for @user do |f| %>
+          <%= f.text_field :name, placeholder: "Nome", class: "radius" %><br>
+          <%= f.email_field :email, placeholder: "Email", class: "radius" %><br>
+          <%= f.text_field :login, placeholder: "Login", class: "radius" %><br>
+          <%= f.password_field :password, placeholder: "Senha", class: "radius" %><br>
+          <%= f.password_field :password_confirmation, placeholder: "Confirme sua senha", class: "radius" %><br>
+          <b><%= f.label :sobre, class: "sobre" %></b>
+          <%= f.text_area :sobre, cols: '49', rows: '7' %><br>
+          <b><%= f.label :perfil_privado, class: "privado" %></b>
+          <div class="container-opcoes-privado">
+            <%= f.label(:true, "Sim")%>
+            <%= f.radio_button(:privado, true, class: "opcoes-privado") %>
+            <%= f.label(:true, "Não")%>
+            <%= f.radio_button(:privado, false, checked: true, class: "opcoes-privado") %> <br>
+          </div><br>
+          <div class="container-avatar-label">
+            <b><%= f.label :avatar, class: "avatar-usuario-edit no-padding" %></b><br>
+          </div>
+          <%= f.file_field :avatar, class: 'radius file-upload-area' %><br>
+
+          <%= f.submit "Salvar alterações", class: "loginboxbutton" %>
+        <% end %>
+      </div>
+      <!--loginform-->
+    </div>
+    <!--loginboxinner-->
   </div>
 </div>
