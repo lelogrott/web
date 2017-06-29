@@ -1,21 +1,33 @@
 
-
 <% provide(:title, "Log in") %>
-<h1>Log in</h1>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(:session, url: login_path) do |f| %>
+<body class="login">
+<!-- header starts here -->
 
-      <%= f.label :login %>
-      <%= f.text_field :login, class: 'form-control' %>
+<!-- header ends here -->
+<div class="loginbox radius">
+  <div class="loginboxinner radius">
+    <div class="loginform">
+      <%= form_for(:usuarios, url:new_usuario_path) do |f| %>
+        <%= f.text_field :name, placeholder: "Nome", class: "radius" %><br>
+        <%= f.email_field :email, placeholder: "Email", class: "radius" %><br>
+        <%= f.text_field :login, placeholder: "Login", class: "radius" %><br>
+        <%= f.password_field :password, placeholder: "Senha", class: "radius" %><br>
 
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
+        <%= f.label :perfil_privado, class: "privado" %>
+        <div class="container-opcoes-privado">
+          <%= f.label(:true, "Sim")%>
+          <%= f.radio_button(:privado, true, class: "opcoes-privado") %>
+          <%= f.label(:true, "Não")%>
+          <%= f.radio_button(:privado, false, checked: true, class: "opcoes-privado") %> <br>
+        </div>
 
-      <%= f.submit "Log in", class: "btn btn-primary" %>
-    <% end %>
-
-    <p>New user? <%= link_to "Sign up now!", new_usuario_path %></p>
+        <%= f.submit "Criar conta!", class: "loginboxbutton" %>
+      <% end %>
+    </div>
+    <!--loginform-->
   </div>
+  <!--loginboxinner-->
 </div>
+<!--loginbox-->
+</body>

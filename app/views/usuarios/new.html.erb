@@ -25,13 +25,13 @@
       <%= f.text_area :sobre %><br>
 
       <%= f.label :perfil_privado %>
+      <div>
       <%= f.label(:true, "Sim")%>
       <%= f.radio_button(:privado, true) %>
       <%= f.label(:true, "Não")%>
-      <%= f.radio_button(:privado, false) %> <br>
-
-      <%= f.label :avatar %><br>
-      <%= f.file_field :avatar %><br>
+      <%= f.radio_button(:privado, false) %>
+      </div>
+       <br>
 
       <%= f.submit "Create my account", class: "btn btn-primary" %>
     <% end %>

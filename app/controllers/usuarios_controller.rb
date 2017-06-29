@@ -11,6 +11,7 @@ class UsuariosController < ApplicationController
 
 	def view
 		@user = Usuario.find(params[:user_id])
+		@receitas = @user.receitas || []
 		if current_user.present? then
 			unless (!@user.privado || @user.seguidores.include?(current_user)) then
 				redirect_to current_user, notice: "O usuário #{@user.name} tem perfil privado."
@@ -19,7 +20,8 @@ class UsuariosController < ApplicationController
 			if (@user.privado) then
 				redirect_to login_path, notice: "O usuário #{@user.name} tem perfil privado."
 			end
-		end	
+		end
+		render 'show'	
 	end
 
 	def receitas
@@ -78,18 +80,15 @@ class UsuariosController < ApplicationController
 	end
 
 	def seguir
-		debugger
 		amigo = Usuario.find(params[:user_id])
 		user = Usuario.find(current_user.id)
-		user.seguindo << amigo
-		user.save!
+		user.seguir(amigo)
 		redirect_to amigo
 	end
 
 	def deixar_de_seguir
 		amigo = Usuario.find(params[:user_id])
-		current_user.seguindo.delete(amigo)
-		current_user.save!
+		current_user.deixar_de_seguir(amigo)
 		redirect_to amigo
 	end
 

@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def new
-
+      destroy if current_user.present?
   end
 
   def create
@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       # Log the user in and redirect to the user's show page.
     else
     	flash[:danger] = 'Invalid email/password combination'
-      # Create an error message.
+      # Create an error mess    age.
       render 'new'
     end
   end

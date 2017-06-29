@@ -10,7 +10,7 @@
     <script src="https://ucarecdn.com/libs/widget/2.10.3/uploadcare.full.min.js" charset="utf-8"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <%= render partial: "layouts/custom_error_messages" %>
-    <%= render partial: "layouts/navbar" %>
+    <%= render partial: "layouts/navbar", locals: { logged_user: current_user.present? }%>
     <%= render partial: "layouts/menu" if current_user.present? %>
   </head>
 
