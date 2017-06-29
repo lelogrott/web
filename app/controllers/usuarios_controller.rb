@@ -98,6 +98,11 @@ class UsuariosController < ApplicationController
 	private
 
 	def user_params
+		if params[:signup]
+			params[:password_confirmation]= ""
+			params[:avatar] = ""
+			params[:sobre] = ""
+		end
 		params.require(:usuario).permit(:name, :email, :login, :password, :password_confirmation, :avatar, :sobre, :privado)
 	end
 

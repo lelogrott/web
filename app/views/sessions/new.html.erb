@@ -8,7 +8,7 @@
 <div class="loginbox radius">
   <div class="loginboxinner radius">
     <div class="loginform">
-      <%= form_for(:usuarios, url:new_usuario_path) do |f| %>
+      <%= form_for(:usuario, url: url_for(controller: 'usuarios', action: 'create', signup: true)) do |f| %>
         <%= f.text_field :name, placeholder: "Nome", class: "radius" %><br>
         <%= f.email_field :email, placeholder: "Email", class: "radius" %><br>
         <%= f.text_field :login, placeholder: "Login", class: "radius" %><br>
