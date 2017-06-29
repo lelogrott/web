@@ -2,7 +2,7 @@ class Usuario < ApplicationRecord
 
 	has_secure_password
 
-	has_attached_file :avatar, styles: { medium: "300x300>", thumb: "150x150>", small: "32x32>" }, default_url: "/images/:style/missing.png"
+	has_attached_file :avatar, styles: { medium: "300x300>", thumb: "150x150>", small: "32x32>" }, default_url: "/images/:style/download.png"
 
 	has_many :receitas
 

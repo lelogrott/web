@@ -1,14 +1,26 @@
-<div class="w3-container w3-padding-32 w3-center usuario-home">  
-	<h1><%= @receita.title.titleize %></h1><br>
-	<!-- <img src="/w3images/chef.jpg" alt="Me" class="w3-image" style="display:block;margin:auto" width="800" height="533"> -->
-	<%= image_tag(@receita.image.url(:medium), class: 'img-receitas-home') unless @receita.image.url.blank? %>
-	<div class="w3-padding-32 sobre w3-center">
-		<p>
-			<h3>Ingredientes</h3>
-			<%= tabela_de_ingredientes(@receita) %>      
-		</p>
-		<h3>Modo de preparo</h3>
-		<%= @receita.modo_de_preparo %> <br>
-		<%= link_to("Excluir receita", excluir_receita_path(@receita)) if (current_user == @receita.usuario) %>
+<div class="config-container">
+  <div class="loginbox radius show user-show-container">
+      <div class="user-container">
+        <!-- About Section -->
+        <div class="w3-container w3-padding-32 w3-center usuario-home show">
+			<h1><%= @receita.title.titleize %></h1><br>
+			<!-- <img src="/w3images/chef.jpg" alt="Me" class="w3-image" style="display:block;margin:auto" width="800" height="533"> -->
+			<%= image_tag(@receita.image.url(:medium), class: 'img-receitas-home') unless @receita.image.url.blank? %>
+			<div class="w3-padding-32 sobre w3-center">
+				<p>
+					<h3>Ingredientes</h3>
+					<%= tabela_de_ingredientes(@receita) %>      
+				</p>
+				<div>
+					
+				<h3>Modo de preparo</h3>
+				</div>
+				<p>
+					
+				<%= @receita.modo_de_preparo.html_safe %> <br>
+				</p>
+				<%= link_to("Excluir receita", excluir_receita_path(@receita)) if (current_user == @receita.usuario) %>
+			</div>
+		</div>
 	</div>
-</div>
+</div></div>

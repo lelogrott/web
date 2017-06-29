@@ -1,29 +1,35 @@
-  
-  <% deve_seguir = !(current_user.seguindo.include?(@user)) %>
-  <!-- About Section -->
-  <div class="w3-container w3-padding-32 w3-center usuario-home">  
-    <h1><%= @user.name.titleize %></h1><br>
-    <!-- <img src="/w3images/chef.jpg" alt="Me" class="w3-image" style="display:block;margin:auto" width="800" height="533"> -->
-    <%= image_tag @user.avatar.url(:medium), class: "avatar-usuario" %>
-    <div class="w3-padding-32 sobre">
-      <p>
-      <%= @user.sobre %>        
-      </p>
-    </div>
-    <% if @user == current_user then %>
-      <%= link_to "Cadastrar nova receita", new_receita_path(usuario_id: @user.id) %>
-    <% else %>
-        <a href=<%= url_for(controller: 'usuarios', action: (deve_seguir ? 'seguir' : 'deixar_de_seguir'), user_id: @user.id)%>><button><%= deve_seguir ? "Seguir" : "Deixar de Seguir" %></button> </a>
-    <% end %>
-  </div>
-  <hr>
-
-    <div class="w3-row-padding w3-padding-16 w3-center" id="food">
-        <% @receitas.each do |receita| %>
-          <div class="w3-quarter" style="display:inline-block;">
-            <%= image_tag receita.image.url(:thumb), class: "img-receitas-home" %>
-            <h3><%= link_to receita.title.titleize, receita_path(receita) %></h3>
+<div class="config-container">
+  <div class="loginbox radius show user-show-container">
+      <div class="user-container">
+        <!-- About Section -->
+        <div class="w3-container w3-padding-32 w3-center usuario-home show">  
+          <h1><%= @user.name.titleize %></h1><br>
+          <!-- <img src="/w3images/chef.jpg" alt="Me" class="w3-image" style="display:block;margin:auto" width="800" height="533"> -->
+          <%= image_tag @user.avatar.url(:medium), class: "avatar-usuario" %>
+          <div class="w3-padding-32 sobre">
+            <p>
+            <%= @user.sobre %>        
+            </p>
           </div>
-        <% end %>     
-    </div>
+          <% if @user == current_user then %>
+            <%= link_to "Cadastrar nova receita", new_receita_path(usuario_id: @user.id) %>
+          <% else %>
+              <% if current_user.present? then %>
+                <a href=<%= url_for(controller: 'usuarios', action: (@deve_seguir ? 'seguir' : 'deixar_de_seguir'), user_id: @user.id)%>><button><%= @deve_seguir ? "Seguir" : "Deixar de Seguir" %></button> </a>
+              <% end %>
+          <% end %>
+        </div>
+      </div>
+  </div>
 </div>
+<div style="clear:both;"></div>
+  
+  <div class="w3-row-padding w3-padding-16 w3-center" id="food">
+    <% @receitas.each do |receita| %>
+      <div class="w3-quarter" style="display:inline-block;">
+        <%= image_tag receita.image.url(:thumb), class: "img-receitas-home" %>
+        <h3><%= link_to receita.title.titleize, receita_path(receita) %></h3>
+      </div>
+    <% end %>     
+  </div>
+

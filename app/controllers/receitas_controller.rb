@@ -17,18 +17,21 @@ class ReceitasController < ApplicationController
 	def create
 		@receita = Receita.new(receita_params)
 		@receita.usuario = Usuario.find(params[:usuario_id])
-		@receita.save! 
-
-		params[:receita][:ingredientes].each do |ingrediente|
-			@receita.ingredientes << Ingrediente.find(ingrediente[:id].to_i)
+		unless @receita.valid? then 
+			redirect_to new_receita_path(@receita, usuario_id: @receita.usuario.id), notice: @receita.errors.full_messages.join( "; ")
+		else		
 			@receita.save!
-			IngredientesReceita.find_by(receita_id: @receita.id, ingrediente_id: ingrediente[:id].to_i).update(quantidade: ingrediente[:quantidade].to_f)
-		end
-		if @receita.save!
-			flash[:success] = "RECEITA CADASTRADA"
-			redirect_to @receita, notice: "A receita foi criada"
-		else
-			render 'new'
+			params[:receita][:ingredientes].each do |ingrediente|
+				@receita.ingredientes << Ingrediente.find(ingrediente[:id].to_i)
+				@receita.save!
+				IngredientesReceita.find_by(receita_id: @receita.id, ingrediente_id: ingrediente[:id].to_i).update(quantidade: ingrediente[:quantidade].to_f)
+			end
+			if @receita.save!
+				flash[:success] = "RECEITA CADASTRADA"
+				redirect_to @receita, notice: "A receita foi criada"
+			else
+				render 'new'
+			end
 		end
 	end
 

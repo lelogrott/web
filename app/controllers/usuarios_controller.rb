@@ -5,15 +5,18 @@ class UsuariosController < ApplicationController
 		@user = Usuario.all
 	end
 
-	def show
-		@receitas = @user.receitas.order('created_at DESC').limit(4)		
+	def view
+		#if current_user.present?
+		@user = Usuario.find(params[:user_id])
+		#@receitas = @user.receitas.order('created_at DESC').limit(4)
+		redirect_to usuario_path(@user)
 	end
 
-	def view
-		@user = Usuario.find(params[:user_id])
+	def show
+		@user ||= Usuario.find(params[:id])
 		@receitas = @user.receitas || []
 		if current_user.present? then
-			unless (!@user.privado || @user.seguidores.include?(current_user)) then
+			unless (!@user.privado || @user.seguidores.include?(current_user) || (current_user == @user)) then
 				redirect_to current_user, notice: "O usuário #{@user.name} tem perfil privado."
 			end
 		else
@@ -21,7 +24,11 @@ class UsuariosController < ApplicationController
 				redirect_to login_path, notice: "O usuário #{@user.name} tem perfil privado."
 			end
 		end
-		render 'show'	
+		@deve_seguir = if current_user.present? then
+			!(current_user.seguindo.include?(@user)) 
+		else
+			false
+		end
 	end
 
 	def receitas
