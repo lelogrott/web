@@ -13,3 +13,21 @@
  *= require_tree .
  *= require_self
  */
+
+ #navbar {
+ 	background-color: rgb(255, 153, 43);
+ 	width: 100%;
+ 	padding-left: 16px;
+ 	padding-right: 16px;
+ 	.logo {
+ 		float: left;
+ 		width: 50%;
+ 		padding-left: 16px;
+ 	}
+
+ 	.login {
+ 		float: right;
+ 		margin-left: 55%;
+ 		padding-right: 16px;
+ 	}
+ }
