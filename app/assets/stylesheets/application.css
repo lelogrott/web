@@ -31,3 +31,20 @@
  		padding-right: 16px;
  	}
  }
+
+
+.privado {
+	text-align: left;
+	display: block;
+	padding: 16px 0px 0px 16px;
+}
+
+.container-opcoes-privado {
+	padding: 16px 0px 0px 16px;
+	float: left;
+	
+}
+.opcoes-privado {
+	display: inline !important;
+	width: inherit !important;
+}

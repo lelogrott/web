@@ -9,34 +9,20 @@
   <div class="loginboxinner radius">
     <div class="loginform">
       <%= form_for(:usuarios, url:new_usuario_path) do |f| %>
-        <%= f.label :name %>
-        <%= f.text_field :name, class: "radius" %><br>
+        <%= f.text_field :name, placeholder: "Nome", class: "radius" %><br>
+        <%= f.email_field :email, placeholder: "Email", class: "radius" %><br>
+        <%= f.text_field :login, placeholder: "Login", class: "radius" %><br>
+        <%= f.password_field :password, placeholder: "Senha", class: "radius" %><br>
 
-        <%= f.label :email %>
-        <%= f.email_field :email, class: "radius" %><br>
+        <%= f.label :perfil_privado, class: "privado" %>
+        <div class="container-opcoes-privado">
+          <%= f.label(:true, "Sim")%>
+          <%= f.radio_button(:privado, true, class: "opcoes-privado") %>
+          <%= f.label(:true, "Não")%>
+          <%= f.radio_button(:privado, false, checked: true, class: "opcoes-privado") %> <br>
+        </div>
 
-        <%= f.label :login %>
-        <%= f.text_field :login, class: "radius" %><br>
-
-        <%= f.label :password %>
-        <%= f.password_field :password, class: "radius" %><br>
-
-        <%= f.label :password_confirmation, "Confirmation" %>
-        <%= f.password_field :password_confirmation, class: "radius" %><br>
-
-        <%= f.label :sobre %>
-        <%= f.text_area :sobre %><br>
-
-        <%= f.label :perfil_privado %>
-        <%= f.label(:true, "Sim")%>
-        <%= f.radio_button(:privado, true) %>
-        <%= f.label(:true, "Não")%>
-        <%= f.radio_button(:privado, false) %> <br>
-
-        <%= f.label :avatar %><br>
-        <%= f.file_field :avatar, class: "radius" %><br>
-
-        <%= f.submit "Create my account", class: "btn btn-primary" %>
+        <%= f.submit "Criar conta!", class: "loginboxbutton" %>
       <% end %>
     </div>
     <!--loginform-->
