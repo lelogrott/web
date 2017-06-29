@@ -5,3 +5,27 @@
 .minhas-receitas {
 	margin-top: 70px;
 }
+
+.div-select {
+    width:250px;  /* Tamanho final do select */
+    overflow:hidden; /* Esconde o conteúdo que passar do tamanho especificado */
+}
+  
+.div-select select {
+      background: url(https://d1110rij82i13w.cloudfront.net/assets/pink-dropdown-open-b35c7308ea04d70eae1b9f804215243efc9be352ca75bada1ae9169e1dcd89ae.png) no-repeat #fff;  /* Imagem de fundo (Seta) */
+      background-position: 205px center;  /*Posição da imagem do background*/
+      width: 270px; /* Tamanho do select, maior que o tamanho da div "div-select" */
+      height:48px; /* altura do select, importante para que tenha a mesma altura em todo os navegadores */
+      font-family:Arial, Helvetica, sans-serif; /* Fonte do Select */
+      font-size:18px; /* Tamanho da Fonte */
+      padding:13px 20px 13px 12px; /* Configurações de padding para posicionar o texto no campo */
+      color:#666; /* Cor da Fonte */
+      text-indent: 0.01px; /* Remove seta padrão do FireFox */
+      text-overflow: "";  /* Remove seta padrão do FireFox */     
+      select::-ms-expand {display: none;} /* Remove seta padrão do IE*/
+  
+}
+
+.ingredients-table {
+	margin: 0 auto;
+}
